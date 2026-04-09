@@ -1,28 +1,23 @@
 import random
 import os
 from dotenv import load_dotenv
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
+import resend
 
 load_dotenv()
-email_password = os.getenv("EMAIL_PASSWORD")
-email_sender = os.getenv("EMAIL_SENDER")
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 def sent_random_code(email):
     code = random.randint(100000, 999999)
 
-    msg = MIMEMultipart('related')
-    msg['Subject'] = "Confirmar email - Price Agent"
-    msg['From'] = email_sender
-    msg['To'] = email
-    msg.attach(MIMEText(f"Tu código de verificación es: {code}", 'plain'))
+    params = {
+        "from": "Price Agent <noreply@priceagent-pcfac.site>",
+        "to": [email],
+        "subject": "Confirmar email - Price Agent",
+        "text": f"Tu código de verificación es: {code}"
+    }
 
     try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            server.starttls()
-            server.login(email_sender, email_password)
-            server.send_message(msg)
+        resend.Emails.send(params)
         print("Email enviado")
     except Exception as e:
         print(f"Error: {e}")

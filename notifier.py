@@ -1,15 +1,11 @@
 import requests
 from dotenv import load_dotenv
 import os
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
+import resend
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
-email_password = os.getenv("EMAIL_PASSWORD")
-email_sender = os.getenv("EMAIL_SENDER")
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 def _build_message(product_name: str, current_price: float, previous_price: float, url: str) -> str:
     msg = ""
@@ -60,25 +56,15 @@ def send_telegram_alert(product_name: str, current_price: float, previous_price:
 def send_email_alert(product_name: str, current_price: float, previous_price: float, url: str, receiver_email: str, url_image: str) -> None:
     body = _build_message(product_name, current_price, previous_price, url)
 
-    msg = MIMEMultipart('related')
-    msg['Subject'] = f'Alerta de precio para {product_name}'
-    msg['From'] = email_sender
-    msg['To'] = receiver_email
-    msg.attach(MIMEText(body, 'plain'))
+    params = {
+        "from": "Price Agent <noreply@priceagent-pcfac.site>",
+        "to": [receiver_email],
+        "subject": f"Alerta de precio para {product_name}",
+        "text": body
+    }
 
     try:
-        response_image = requests.get(url_image, headers={'User-Agent': 'Mozilla/5.0'})
-        response_image.raise_for_status()
-        image_mime = MIMEImage(response_image.content)
-        msg.attach(image_mime)
-    except Exception as e:
-        print(f'No se pudo adjuntar la imagen: {e}')
-
-    try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            server.starttls()
-            server.login(email_sender, email_password)
-            server.send_message(msg)
+        resend.Emails.send(params)
         print("Email enviado")
     except Exception as e:
         print(f"Error: {e}")
