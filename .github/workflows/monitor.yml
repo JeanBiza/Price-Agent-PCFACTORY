@@ -1,0 +1,22 @@
+name: Monitor de precios
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'  # lunes a las 12:00 UTC (9:00 Chile)
+  workflow_dispatch:       # botón para correrlo manualmente
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python monitor.py
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
