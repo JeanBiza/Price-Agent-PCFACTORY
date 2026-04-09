@@ -28,3 +28,5 @@ def run_monitor():
                     send_email_alert(name, price, last_price, product[1], user_email, image_url)
             save_price(product[1], product[2], price, user_id)
 
+if __name__ == "__main__":
+    run_monitor()
