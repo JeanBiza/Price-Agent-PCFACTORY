@@ -5,11 +5,13 @@ from notifier import send_email_alert, send_telegram_alert
 def run_monitor():
     init_db()
     users = get_users()
+    print(f"Usuarios encontrados: {len(users) if users else 0}")
     for i in users:
         user_id = i[0]
         user_email = i[1]
         user_chat_id = i[3]
         products = get_active_products(user_id)
+        print(f"Productos para usuario {user_id}: {len(products) if products else 0}")
         if not products:
             print("No hay productos activos")
             continue
