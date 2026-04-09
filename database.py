@@ -3,6 +3,7 @@ import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 import os
+import pytz
 load_dotenv()
 DATABASE = os.getenv("DATABASE_URL")
 
@@ -175,8 +176,8 @@ def save_price(url: str, name: str, price: float, user_id) -> None:
     try:
         with psycopg2.connect(DATABASE) as conn:
             cursor = conn.cursor()
-            date = datetime.datetime.now()
-            actual_time = date.strftime("%Y/%m/%d %H:%M:%S")
+            chile_tz = pytz.timezone('America/Santiago')
+            actual_time = datetime.now(chile_tz).strftime("%Y/%m/%d %H:%M:%S")
             cursor.execute("INSERT INTO history (url, name, price, date, user_id) VALUES (%s,%s,%s,%s,%s)", (url, name, price, actual_time, user_id))
             conn.commit()
     except Exception as E:
