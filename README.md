@@ -75,7 +75,6 @@ cp .env.example .env
 TOKEN=          # Token de tu bot de Telegram (@BotFather)
 EMAIL_SENDER=   # Tu email de Gmail
 EMAIL_PASSWORD= # Contraseña de aplicación de Gmail
-RESEND_API_KEY= # API key de Resend (resend.com)
 SECRET_KEY=     # Clave secreta para Flask sessions
 DATABASE_URL=   # URL de conexión a PostgreSQL (Supabase)
 ```
@@ -103,11 +102,6 @@ La aplicación estará disponible en `http://localhost:5000`
 3. Genera una contraseña para "Correo"
 4. Cópiala a `EMAIL_PASSWORD` en el `.env`
 
-### Resend
-1. Crea una cuenta en [resend.com](https://resend.com)
-2. Genera una API key
-3. Cópiala a `RESEND_API_KEY` en el `.env`
-
 ### Supabase
 1. Crea un proyecto en [supabase.com](https://supabase.com)
 2. Ve a **Settings → Database → Connection string**
@@ -132,7 +126,6 @@ Para configurarlo, agrega los siguientes **secrets** en tu repositorio:
 TOKEN
 EMAIL_PASSWORD
 EMAIL_SENDER
-RESEND_API_KEY
 DATABASE_URL
 ```
 
