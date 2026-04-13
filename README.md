@@ -1,17 +1,17 @@
-# 🤖 Price Agent PCFactory
+# Price Agent PCFactory
  
 Aplicación web que monitorea precios de productos en **PCFactory** y envía alertas automáticas por **Telegram** y **Email** cuando el precio cambia.
  
 ## ✨ Características
  
-- 📦 Seguimiento de múltiples productos simultáneamente
-- 🔔 Alertas automáticas por Telegram y Email al detectar cambios de precio
-- 📊 Historial de precios por producto
-- 👤 Sistema de usuarios con registro, verificación por email y login
-- ☁️ Desplegado en la nube con base de datos PostgreSQL
-- ⏰ Monitoreo automático semanal via GitHub Actions
+- Seguimiento de múltiples productos simultáneamente
+- Alertas automáticas por Telegram y Email al detectar cambios de precio
+- Historial de precios por producto
+- Sistema de usuarios con registro, verificación por email y login
+- Desplegado en la nube con base de datos PostgreSQL
+- Monitoreo automático semanal via GitHub Actions
  
-## 🛠️ Stack tecnológico
+## Stack tecnológico
  
 | Componente | Tecnología |
 |---|---|
@@ -23,7 +23,7 @@ Aplicación web que monitorea precios de productos en **PCFactory** y envía ale
 | Hosting | Render |
 | Monitoreo automático | GitHub Actions |
  
-## 📁 Estructura del proyecto
+## Estructura del proyecto
  
 ```
 Price-Agent/
@@ -48,7 +48,7 @@ Price-Agent/
 └── .gitignore
 ```
  
-## ⚙️ Instalación local
+## Instalación local
  
 ### 1. Clonar el repositorio
  
@@ -86,7 +86,7 @@ python app.py
  
 La aplicación estará disponible en `http://localhost:5000`
  
-## 🔑 Configuración de servicios externos
+## Configuración de servicios externos
  
 ### Telegram Bot
 1. Busca `@BotFather` en Telegram
@@ -108,7 +108,7 @@ La aplicación estará disponible en `http://localhost:5000`
 2. Ve a **Settings → Database → Connection string**
 3. Copia la URL del connection pooler a `DATABASE_URL` en el `.env`
  
-## 🚀 Deploy en Render
+## Deploy en Render
  
 1. Conecta tu repositorio de GitHub en [render.com](https://render.com)
 2. Crea un nuevo **Web Service** con la siguiente configuración:
@@ -122,7 +122,7 @@ SECRET_KEY
 DATABASE_URL
 ```
  
-## ⏰ Monitoreo automático con GitHub Actions
+## Monitoreo automático con GitHub Actions
  
 El archivo `.github/workflows/monitor.yml` ejecuta el monitoreo automáticamente **todos los lunes a las 12:00 UTC**.
  
@@ -137,11 +137,11 @@ DATABASE_URL
  
 También puedes ejecutarlo manualmente desde la pestaña **Actions** de tu repositorio usando el botón **Run workflow**.
  
-## 🌐 Demo
+## Demo
  
 [price-agent-pcfactory.onrender.com](https://price-agent-pcfactory.onrender.com)
  
-## 📝 Uso
+## Uso
  
 1. **Regístrate** con tu email y verifica tu cuenta
 2. **Agrega tu Telegram ID** en la sección de perfil para recibir alertas
@@ -149,6 +149,6 @@ También puedes ejecutarlo manualmente desde la pestaña **Actions** de tu repos
 4. **Define un umbral** de precio de referencia
 5. Cada lunes el sistema consulta los precios y te notifica si hubo cambios
  
-## 👨‍💻 Autor
+## Autor
  
-Jean Biza — [@JeanBiza](https://github.com/JeanBiza)
+Jean — [@JeanBiza](https://github.com/JeanBiza)
