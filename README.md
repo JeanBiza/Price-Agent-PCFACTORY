@@ -2,7 +2,7 @@
  
 Aplicación web que monitorea precios de productos en **PCFactory** y envía alertas automáticas por **Telegram** y **Email** cuando el precio cambia.
  
-## ✨ Características
+## Características
  
 - Seguimiento de múltiples productos simultáneamente
 - Alertas automáticas por Telegram y Email al detectar cambios de precio
@@ -134,21 +134,5 @@ TOKEN
 RESEND_API_KEY
 DATABASE_URL
 ```
- 
-También puedes ejecutarlo manualmente desde la pestaña **Actions** de tu repositorio usando el botón **Run workflow**.
- 
-## Demo
- 
-[price-agent-pcfactory.onrender.com](https://price-agent-pcfactory.onrender.com)
- 
-## Uso
- 
-1. **Regístrate** con tu email y verifica tu cuenta
-2. **Agrega tu Telegram ID** en la sección de perfil para recibir alertas
-3. **Agrega productos** pegando la URL de cualquier producto de PCFactory
-4. **Define un umbral** de precio de referencia
-5. Cada lunes el sistema consulta los precios y te notifica si hubo cambios
- 
-## Autor
  
 Jean — [@JeanBiza](https://github.com/JeanBiza)
